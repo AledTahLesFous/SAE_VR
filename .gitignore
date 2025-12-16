@@ -19,6 +19,9 @@
 *.svd
 
 .DS_Store
+.utmp/
+Assets/_Recovery/
+Assets/Settings/Build Profiles
 
 # Unity3D generated meta files
 *.pidb.meta
