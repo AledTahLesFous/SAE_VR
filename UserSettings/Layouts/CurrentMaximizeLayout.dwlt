@@ -19,12 +19,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 36
-    width: 1536
-    height: 724.8
+    width: 1440
+    height: 710
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 37
+  controlID: 68
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -320,15 +320,27 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
-    x: 292.5
-    y: 89
-    width: 893
-    height: 392.5
+<<<<<<< HEAD
 =======
     x: 312
     y: 79.200005
     width: 952.4
     height: 401.2
+=======
+>>>>>>> origin/prefab
+    x: 292.5
+    y: 89
+    width: 893
+    height: 392.5
+<<<<<<< HEAD
+=======
+    x: 312
+    y: 79.200005
+    width: 952.4
+    height: 401.2
+>>>>>>> origin/prefab
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -829,6 +841,7 @@ MonoBehaviour:
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.8293832, y: 1.5037991, z: -0.2546049}
     speed: 2
     m_Value: {x: -0.8293832, y: 1.5037991, z: -0.2546049}
@@ -836,6 +849,16 @@ MonoBehaviour:
     m_Target: {x: -3.5223536, y: 0.025750935, z: 2.62434}
     speed: 2
     m_Value: {x: -3.5223536, y: 0.025750935, z: 2.62434}
+>>>>>>> origin/prefab
+=======
+    m_Target: {x: -3.5223536, y: 0.025750935, z: 2.62434}
+    speed: 2
+    m_Value: {x: -3.5223536, y: 0.025750935, z: 2.62434}
+=======
+    m_Target: {x: -0.8293832, y: 1.5037991, z: -0.2546049}
+    speed: 2
+    m_Value: {x: -0.8293832, y: 1.5037991, z: -0.2546049}
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_RenderMode: 0
   m_CameraMode:
@@ -883,13 +906,7 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< HEAD
-    m_Target: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-    speed: 2
-    m_Value: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_Size:
-    m_Target: 0.17846568
-    speed: 2
-    m_Value: 0.17846568
+<<<<<<< HEAD
 =======
     m_Target: {x: 0.01310088, y: 0.98472553, z: -0.15124497, w: 0.08529246}
     speed: 2
@@ -898,6 +915,27 @@ MonoBehaviour:
     m_Target: 0.74053293
     speed: 2
     m_Value: 0.74053293
+=======
+>>>>>>> origin/prefab
+    m_Target: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    speed: 2
+    m_Value: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_Size:
+    m_Target: 0.17846568
+    speed: 2
+    m_Value: 0.17846568
+<<<<<<< HEAD
+=======
+    m_Target: {x: 0.01310088, y: 0.98472553, z: -0.15124497, w: 0.08529246}
+    speed: 2
+    m_Value: {x: 0.013100843, y: 0.98472273, z: -0.15124454, w: 0.08529221}
+  m_Size:
+    m_Target: 0.74053293
+    speed: 2
+    m_Value: 0.74053293
+>>>>>>> origin/prefab
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_Ortho:
     m_Target: 0
@@ -933,7 +971,10 @@ MonoBehaviour:
     section: Lighting
   m_ViewIsLockedToObject: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/prefab
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1206,6 +1247,11 @@ MonoBehaviour:
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
   m_showToolbar: 1
+<<<<<<< HEAD
+>>>>>>> origin/prefab
+=======
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
 --- !u!114 &9
 MonoBehaviour:
@@ -1224,6 +1270,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 418.5
     width: 1187.5
     height: 291.5
@@ -1231,6 +1278,16 @@ MonoBehaviour:
     y: 427.2
     width: 1266.4
     height: 297.59998
+>>>>>>> origin/prefab
+=======
+    y: 427.2
+    width: 1266.4
+    height: 297.59998
+=======
+    y: 418.5
+    width: 1187.5
+    height: 291.5
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_MinSize: {x: 231, y: 276}
   m_MaxSize: {x: 10001, y: 10026}
@@ -1263,6 +1320,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 507.5
     width: 1186.5
     height: 265.5
@@ -1270,6 +1328,16 @@ MonoBehaviour:
     y: 506.4
     width: 1265.4
     height: 271.59998
+>>>>>>> origin/prefab
+=======
+    y: 506.4
+    width: 1265.4
+    height: 271.59998
+=======
+    y: 507.5
+    width: 1186.5
+    height: 265.5
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1294,9 +1362,16 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets
 =======
     - Assets/Scenes
+>>>>>>> origin/prefab
+=======
+    - Assets/Scenes
+=======
+    - Assets
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
     m_Globs: []
     m_ProductIds: 
@@ -1308,16 +1383,7 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders:
 <<<<<<< HEAD
-  - Assets
-  m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/mairofrebourg/Desktop/SAE VR/SAE_VR
-  m_LockTracker:
-    m_IsLocked: 0
-  m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 24c00000
-    m_LastClickedID: 49188
-    m_ExpandedIDs: 0000000024c00000
+<<<<<<< HEAD
 =======
   - Assets/Scenes
   m_LastFoldersGridSize: -1
@@ -1329,6 +1395,33 @@ MonoBehaviour:
     m_SelectedIDs: a6bd0000
     m_LastClickedID: 48550
     m_ExpandedIDs: 0000000072bc0000a2bd000000ca9a3bffffff7f
+=======
+>>>>>>> origin/prefab
+  - Assets
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: /Users/mairofrebourg/Desktop/SAE VR/SAE_VR
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 24c00000
+    m_LastClickedID: 49188
+    m_ExpandedIDs: 0000000024c00000
+<<<<<<< HEAD
+=======
+  - Assets/Scenes
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: C:\Users\Atom\Desktop\SAE_V\SAE_VR
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 52.400024}
+    m_SelectedIDs: a6bd0000
+    m_LastClickedID: 48550
+    m_ExpandedIDs: 0000000072bc0000a2bd000000ca9a3bffffff7f
+>>>>>>> origin/prefab
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1359,9 +1452,16 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 0000000024c00000
 =======
     m_ExpandedIDs: 0000000072bc0000
+>>>>>>> origin/prefab
+=======
+    m_ExpandedIDs: 0000000072bc0000
+=======
+    m_ExpandedIDs: 0000000024c00000
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1389,15 +1489,27 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
-    m_SelectedInstanceIDs: b0b6ffff
-    m_LastClickedInstanceID: -18768
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c62300009aba0000
+<<<<<<< HEAD
 =======
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300009aba0000f2e90000
+=======
+>>>>>>> origin/prefab
+    m_SelectedInstanceIDs: b0b6ffff
+    m_LastClickedInstanceID: -18768
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c62300009aba0000
+<<<<<<< HEAD
+=======
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c62300009aba0000f2e90000
+>>>>>>> origin/prefab
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1481,15 +1593,27 @@ MonoBehaviour:
     x: 1266.4
     y: 0
 <<<<<<< HEAD
-    width: 252.5
-    height: 710
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+<<<<<<< HEAD
 =======
     width: 269.59998
     height: 724.8
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+>>>>>>> origin/prefab
+    width: 252.5
+    height: 710
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
+<<<<<<< HEAD
+=======
+    width: 269.59998
+    height: 724.8
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> origin/prefab
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_ActualView: {fileID: 13}
   m_Panes:
@@ -1518,15 +1642,27 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
-    x: 1187.5
-    y: 89
-    width: 251.5
-    height: 684
+<<<<<<< HEAD
 =======
     x: 1266.4
     y: 79.200005
     width: 268.59998
     height: 698.8
+=======
+>>>>>>> origin/prefab
+    x: 1187.5
+    y: 89
+    width: 251.5
+    height: 684
+<<<<<<< HEAD
+=======
+    x: 1266.4
+    y: 79.200005
+    width: 268.59998
+    height: 698.8
+>>>>>>> origin/prefab
+=======
+>>>>>>> b576c471a70f24fa9074e545baa0782558bd900b
 >>>>>>> origin/prefab
   m_SerializedDataModeController:
     m_DataMode: 0
