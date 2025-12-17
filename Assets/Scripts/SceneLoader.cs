@@ -5,7 +5,8 @@ public class SceneLoader : MonoBehaviour
 {
     void Start()
     {
-        SceneManager.LoadScene("XX - Testing 1", LoadSceneMode.Additive);
-        SceneManager.LoadScene("XX - Testing 2", LoadSceneMode.Additive);
+        SceneManager.LoadScene("01 - Player", LoadSceneMode.Additive);
+        SceneManager.LoadScene("02 - Space", LoadSceneMode.Additive);
+        SceneManager.LoadScene("02 - Key", LoadSceneMode.Additive);
     }
 }
