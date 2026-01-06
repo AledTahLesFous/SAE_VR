@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5455759399466300975}
   - component: {fileID: 5319442548170988892}
   m_Layer: 0
-  m_Name: uploads_files_5202732_Rustic+Key
+  m_Name: PF_Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
