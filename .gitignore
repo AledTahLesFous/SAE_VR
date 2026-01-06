@@ -63,7 +63,7 @@ Assets/_Recovery/
 Assets/Settings/Build Profiles
 Assets/Settings/Build Profiles.meta
 UserSettings/EditorUserSettings.asset
-
+UserSettings/
 
 # Unity3D generated meta files
 *.pidb.meta
