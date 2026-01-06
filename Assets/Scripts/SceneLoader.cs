@@ -7,6 +7,5 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("01 - Player", LoadSceneMode.Additive);
         SceneManager.LoadScene("02 - Space", LoadSceneMode.Additive);
-        SceneManager.LoadScene("02 - Key", LoadSceneMode.Additive);
     }
 }
