@@ -24,9 +24,6 @@ public class LockSocket : MonoBehaviour
         // Attend la fin du frame pour que le socket ait fini le snap
         yield return new WaitForEndOfFrame();
 
-        // Parent la clé au socket
-        key.transform.SetParent(socket.transform, true);
-
         // Rends la clé kinematic
         Rigidbody rb = key.GetComponent<Rigidbody>();
         if (rb != null)
@@ -47,13 +44,16 @@ public class LockSocket : MonoBehaviour
     {
         GameObject key = args.interactableObject.transform.gameObject;
 
-        // Retire le parent
-        key.transform.SetParent(null, true);
-
         // Réactive la physique
         Rigidbody rb = key.GetComponent<Rigidbody>();
         if (rb != null)
             rb.isKinematic = false;
 
+        // Réactive le grab si nécessaire
+        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grab = key.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        if (grab != null)
+            grab.enabled = true;
+
+        Debug.Log("Clé retirée");
     }
 }
