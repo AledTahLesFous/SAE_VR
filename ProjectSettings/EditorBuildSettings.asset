@@ -6,20 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Assets/Furnitures/BathroomPack/Scenes/Demo.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/03 - Test.unity
     guid: 38268922c9e3da345882d02ba62fd301
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/01 - Player.unity
     guid: 291843301f22ace47a1f30cc3f01499b
   - enabled: 1
     path: Assets/Scenes/02 - Space.unity
     guid: a690d9bcb3fd1a34887a5cf168041dec
   - enabled: 0
-    path: Assets/Scenes/02 - Key.unity
-    guid: 01e4ff946ecdbfa45bb0e52cd7ecf34c
+    path: Assets/Scenes/02.1 - Lamps.unity
+    guid: 927a58bab120af44fb043f21162a2546
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5e5185ffbf12342acad6aa4f071f1df0, type: 2}
