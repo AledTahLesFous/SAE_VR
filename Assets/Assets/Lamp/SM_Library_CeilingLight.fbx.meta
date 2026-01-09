@@ -3,17 +3,7 @@ guid: 225f6a3109ca49b4b89e0ad7426f2d98
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Library_CeilingLight
-    second: {fileID: 2100000, guid: 1d4ff94353ee35248b017103bd181e34, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Library_CeilingLight_G
-    second: {fileID: 2100000, guid: 1d4ff94353ee35248b017103bd181e34, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
