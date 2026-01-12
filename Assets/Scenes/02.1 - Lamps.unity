@@ -626,6 +626,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_LockedDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 8918974048368566778, guid: d18b1f447b8013d41a97584386634ee9, type: 3}
+      propertyPath: keySocket
+      value: 
+      objectReference: {fileID: 1252914602}
+    - target: {fileID: 8918974048368566778, guid: d18b1f447b8013d41a97584386634ee9, type: 3}
+      propertyPath: requiredKey
+      value: 
+      objectReference: {fileID: 1545586143}
     - target: {fileID: 8948750825173809454, guid: d18b1f447b8013d41a97584386634ee9, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -652,6 +660,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3096561930399443279, guid: d18b1f447b8013d41a97584386634ee9, type: 3}
   m_PrefabInstance: {fileID: 1252914600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1252914602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4653330199954854879, guid: d18b1f447b8013d41a97584386634ee9, type: 3}
+  m_PrefabInstance: {fileID: 1252914600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor
 --- !u!1001 &1545586142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -709,6 +728,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b01a7c19fabbc04db7d50deffd03fa5, type: 3}
+--- !u!1 &1545586143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6938342108815564238, guid: 5b01a7c19fabbc04db7d50deffd03fa5, type: 3}
+  m_PrefabInstance: {fileID: 1545586142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1545586149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6070294813347143409, guid: 5b01a7c19fabbc04db7d50deffd03fa5, type: 3}
