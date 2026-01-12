@@ -517,6 +517,18 @@ PrefabInstance:
       propertyPath: targetLight
       value: 
       objectReference: {fileID: 976217748}
+    - target: {fileID: 320404426443364661, guid: a18c6b87903be434a9ac6eabd4563b06, type: 3}
+      propertyPath: targetLights.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 320404426443364661, guid: a18c6b87903be434a9ac6eabd4563b06, type: 3}
+      propertyPath: 'targetLights.Array.data[0]'
+      value: 
+      objectReference: {fileID: 976217748}
+    - target: {fileID: 320404426443364661, guid: a18c6b87903be434a9ac6eabd4563b06, type: 3}
+      propertyPath: 'targetLights.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1992556230}
     - target: {fileID: 2288922794323704178, guid: a18c6b87903be434a9ac6eabd4563b06, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.20000002

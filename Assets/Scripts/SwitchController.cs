@@ -7,8 +7,8 @@ public class XRSwitch : MonoBehaviour
     public GameObject onVisual;    // enfant On
     public GameObject offVisual;   // enfant Off
 
-    [Header("Light to Toggle")]
-    public Light targetLight;      // la lumière à allumer/éteindre
+    [Header("Lights to Toggle")]
+    public Light[] targetLights;   // Tableau de lumières à contrôler
 
     private bool isOn = false;     // état du switch
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable interactable;
@@ -24,7 +24,7 @@ public class XRSwitch : MonoBehaviour
             interactable.selectEntered.AddListener(_ => Toggle());
         }
 
-        // Met à jour l'état visuel et lumière au démarrage
+        // Met à jour l'état visuel et lumières au démarrage
         UpdateVisuals();
     }
 
@@ -35,12 +35,19 @@ public class XRSwitch : MonoBehaviour
         UpdateVisuals();
     }
 
-    // Active le visuel correspondant et la lumière
+    // Active le visuel correspondant et toutes les lumières
     void UpdateVisuals()
     {
         if (onVisual != null) onVisual.SetActive(isOn);
         if (offVisual != null) offVisual.SetActive(!isOn);
 
-        if (targetLight != null) targetLight.enabled = isOn;
+        // Active ou désactive TOUTES les lumières du tableau
+        foreach (Light light in targetLights)
+        {
+            if (light != null)
+            {
+                light.enabled = isOn;
+            }
+        }
     }
 }
