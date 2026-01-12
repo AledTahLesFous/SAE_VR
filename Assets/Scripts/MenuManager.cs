@@ -8,6 +8,13 @@ public class MenuManager : MonoBehaviour
 {
     [Header("Références des boutons")]
     [SerializeField] private Button startButton;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private Button noticeButton;
+    [SerializeField] private Button closeNoticeButton;
+    
+    [Header("Panneaux")]
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject noticePanel;
     
     [Header("Texte de feedback (optionnel)")]
     [SerializeField] private TextMeshProUGUI feedbackText;
@@ -25,9 +32,54 @@ public class MenuManager : MonoBehaviour
             startButton.onClick.AddListener(OnStartButtonClicked);
         }
         
+        if (quitButton != null)
+        {
+            quitButton.onClick.AddListener(QuitGame);
+        }
+        
+        if (noticeButton != null)
+        {
+            noticeButton.onClick.AddListener(ShowNotice);
+        }
+        
+        if (closeNoticeButton != null)
+        {
+            closeNoticeButton.onClick.AddListener(HideNotice);
+        }
+        
+        // Cacher le panneau notice au démarrage
+        if (noticePanel != null)
+        {
+            noticePanel.SetActive(false);
+        }
+        
         if (feedbackText != null)
         {
             feedbackText.text = "";
+        }
+    }
+    
+    public void ShowNotice()
+    {
+        if (noticePanel != null)
+        {
+            noticePanel.SetActive(true);
+        }
+        if (menuPanel != null)
+        {
+            menuPanel.SetActive(false);
+        }
+    }
+    
+    public void HideNotice()
+    {
+        if (noticePanel != null)
+        {
+            noticePanel.SetActive(false);
+        }
+        if (menuPanel != null)
+        {
+            menuPanel.SetActive(true);
         }
     }
     
