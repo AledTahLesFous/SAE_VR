@@ -9,6 +9,10 @@ public class XRSwitch : MonoBehaviour
 
     [Header("Lights to Toggle")]
     public Light[] targetLights;   // Tableau de lumières à contrôler
+    
+    [Header("Sound Manager")]
+    [Tooltip("Référence au gestionnaire de sons de l'interrupteur")]
+    public SwitchSoundManager soundManager;
 
     private bool isOn = false;     // état du switch
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable interactable;
@@ -33,6 +37,12 @@ public class XRSwitch : MonoBehaviour
     {
         isOn = !isOn;
         UpdateVisuals();
+        
+        // Jouer le son approprié
+        if (soundManager != null)
+        {
+            soundManager.PlaySwitchSound(isOn);
+        }
     }
 
     // Active le visuel correspondant et toutes les lumières
