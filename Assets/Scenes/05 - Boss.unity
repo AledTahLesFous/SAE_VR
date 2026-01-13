@@ -991,6 +991,20 @@ MonoBehaviour:
   moveSpeed: 2
   rotationSpeed: 0.3
   visualOffset: {x: 0, y: 0, z: 0}
+  visionRange: 10
+  visionAngle: 90
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  debugRaycast: 1
+  chaseSpeed: 4
+  chaseTimeBeforeGiveUp: 5
+  pointAnimationTrigger: PointAction
+  animationDuration: 3
+  pauseTimeAtPoint: 0
+  showVisionInGame: 1
+  patrolVisionColor: {r: 0, g: 0, b: 1, a: 0.3}
+  chaseVisionColor: {r: 1, g: 0, b: 0, a: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
