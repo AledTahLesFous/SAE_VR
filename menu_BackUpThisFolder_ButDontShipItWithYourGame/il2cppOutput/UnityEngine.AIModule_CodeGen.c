@@ -29,6 +29,7 @@ extern void NavMeshAgent_set_angularSpeed_mD2AE9EE187EF1C45F519576B5FC8581DC6B7D
 extern void NavMeshAgent_set_acceleration_mEAA92D7837B8D726891846DBBB6114DB13CD597E (void);
 extern void NavMeshAgent_set_updatePosition_m25CA3F441A2EEC82096B4BCFAD4E5FDC10867372 (void);
 extern void NavMeshAgent_set_updateRotation_mBF6EDBC9BBAF32490229D7DD6BC821A420C3399D (void);
+extern void NavMeshAgent_set_radius_m34F08DD2BD01A5DDA17FE1B02EE03D361B44F1AC (void);
 extern void NavMeshAgent__ctor_m585725EF2A2A569E59283223CFF1BE6FF9A44EED (void);
 extern void NavMeshAgent_SetDestination_Injected_m3A84736B6088B850C60AD1112C2CDF74D70818E2 (void);
 extern void NavMeshAgent_get_stoppingDistance_Injected_m69CBD064445D8B9AC64951AAAF026B7E8672E854 (void);
@@ -42,6 +43,7 @@ extern void NavMeshAgent_set_angularSpeed_Injected_m2C1E506A81BFBBE55C79468C184C
 extern void NavMeshAgent_set_acceleration_Injected_m996FA9EFBEC314F9D16F6D601BE37B8A32758BBD (void);
 extern void NavMeshAgent_set_updatePosition_Injected_m4EB1845386CF1933A77BDD6D883DE7126605F6FA (void);
 extern void NavMeshAgent_set_updateRotation_Injected_m74D9A6C3F28B0B693E074035001E10E7C26545B0 (void);
+extern void NavMeshAgent_set_radius_Injected_m05C60BC6BEAC573B86134AE9940508868223F73A (void);
 extern void NavMeshData__ctor_m2C0DE2AACB529EE0ABB27F514E4968F62BE97C72 (void);
 extern void NavMeshData__ctor_mAB1CDA814B6CC620C429A82D9B600059A02E37AD (void);
 extern void NavMeshData_Internal_Create_m865E1294265FA62FBCFC5C77FB920B765F1443CA (void);
@@ -117,7 +119,7 @@ extern void NavMeshBuildSettings_set_voxelSize_mDEF5908F6C7C94F5EAF879DF9F28AE02
 extern void NavMeshBuildSettings_set_overrideTileSize_m8451EB820C1A274972559C392C16193596A64B31 (void);
 extern void NavMeshBuildSettings_set_tileSize_mE1B92472E4DCAA121A64DC92949C872900DCC5A1 (void);
 extern void NavMeshBuildSettings_set_buildHeightMesh_mF126A107EC00A2336BEEDB06E3F84AEADF905E1E (void);
-static Il2CppMethodPointer s_methodPointers[110] = 
+static Il2CppMethodPointer s_methodPointers[112] = 
 {
 	NavMeshBuilder_CollectSources_m9042F3587BA4F4E5E588C94720D1C86E0EC842AC,
 	NavMeshBuilder_CollectSources_m604DC897D95D9B7DF4251FD7A55D1CA3D32E624A,
@@ -141,6 +143,7 @@ static Il2CppMethodPointer s_methodPointers[110] =
 	NavMeshAgent_set_acceleration_mEAA92D7837B8D726891846DBBB6114DB13CD597E,
 	NavMeshAgent_set_updatePosition_m25CA3F441A2EEC82096B4BCFAD4E5FDC10867372,
 	NavMeshAgent_set_updateRotation_mBF6EDBC9BBAF32490229D7DD6BC821A420C3399D,
+	NavMeshAgent_set_radius_m34F08DD2BD01A5DDA17FE1B02EE03D361B44F1AC,
 	NavMeshAgent__ctor_m585725EF2A2A569E59283223CFF1BE6FF9A44EED,
 	NavMeshAgent_SetDestination_Injected_m3A84736B6088B850C60AD1112C2CDF74D70818E2,
 	NavMeshAgent_get_stoppingDistance_Injected_m69CBD064445D8B9AC64951AAAF026B7E8672E854,
@@ -154,6 +157,7 @@ static Il2CppMethodPointer s_methodPointers[110] =
 	NavMeshAgent_set_acceleration_Injected_m996FA9EFBEC314F9D16F6D601BE37B8A32758BBD,
 	NavMeshAgent_set_updatePosition_Injected_m4EB1845386CF1933A77BDD6D883DE7126605F6FA,
 	NavMeshAgent_set_updateRotation_Injected_m74D9A6C3F28B0B693E074035001E10E7C26545B0,
+	NavMeshAgent_set_radius_Injected_m05C60BC6BEAC573B86134AE9940508868223F73A,
 	NavMeshData__ctor_m2C0DE2AACB529EE0ABB27F514E4968F62BE97C72,
 	NavMeshData__ctor_mAB1CDA814B6CC620C429A82D9B600059A02E37AD,
 	NavMeshData_Internal_Create_m865E1294265FA62FBCFC5C77FB920B765F1443CA,
@@ -271,47 +275,47 @@ extern void NavMeshBuildSettings_set_tileSize_mE1B92472E4DCAA121A64DC92949C87290
 extern void NavMeshBuildSettings_set_buildHeightMesh_mF126A107EC00A2336BEEDB06E3F84AEADF905E1E_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[39] = 
 {
-	{ 0x0600002B, NavMeshDataInstance_get_valid_m9BD94D223A13D2F84E95E7E70E672360402AE616_AdjustorThunk },
-	{ 0x0600002C, NavMeshDataInstance_get_id_m6C520A732C9A790D81D3DBD95CE3493440FC9F86_AdjustorThunk },
-	{ 0x0600002D, NavMeshDataInstance_set_id_m2CECFBED95125E066CA7A68BCC64C10912FCD61F_AdjustorThunk },
-	{ 0x0600002E, NavMeshDataInstance_Remove_mDC57A2ABE926E61CC28E001EC9AA5A40B9CA7635_AdjustorThunk },
-	{ 0x0600002F, NavMeshDataInstance_set_owner_m09F05AD2057CA0058E74504143C95ED8E1AABC8D_AdjustorThunk },
-	{ 0x06000030, NavMeshLinkData_set_startPosition_m4E0893E2A63775D7129A831A574F2F0A06440BE2_AdjustorThunk },
-	{ 0x06000031, NavMeshLinkData_set_endPosition_m1B5D0E5D015DC6DFB762CD7D97A410B1288AC6AC_AdjustorThunk },
-	{ 0x06000032, NavMeshLinkData_set_costModifier_mE28AAEBCA77463892876EAADF05AA110D2339600_AdjustorThunk },
-	{ 0x06000033, NavMeshLinkData_set_bidirectional_m89572A00DDCC0E1AB1CF328655D40F66008EB24F_AdjustorThunk },
-	{ 0x06000034, NavMeshLinkData_set_width_mD244463C49B525AFA44B7F56843E41F567D16496_AdjustorThunk },
-	{ 0x06000035, NavMeshLinkData_set_area_m6DA7475FA09DF4488B24D3B70B6101A70F79CB19_AdjustorThunk },
-	{ 0x06000036, NavMeshLinkData_set_agentTypeID_m4822096B83F3D22FF348616C02F28F1F7FE66BF7_AdjustorThunk },
-	{ 0x06000037, NavMeshLinkInstance_get_id_m977E1F909249931074CA9190A1DBCB0A6654F1D6_AdjustorThunk },
-	{ 0x06000038, NavMeshLinkInstance_set_id_mA9A63E79FBA46A0ED4995E85A42CB9AF4D0FEEAB_AdjustorThunk },
-	{ 0x06000052, NavMeshBuildSource_get_transform_m1950BA7D6106161B25629D19037355FAFCC8FF77_AdjustorThunk },
-	{ 0x06000053, NavMeshBuildSource_set_transform_m7E9E224BFD798D20012492199BBD408D82AA9A00_AdjustorThunk },
-	{ 0x06000054, NavMeshBuildSource_get_size_m515CADA91789EC141B963B72FB217DA442CFBACE_AdjustorThunk },
-	{ 0x06000055, NavMeshBuildSource_set_size_m8BF0198CBE370CE89B9B29917E105ABA54F05762_AdjustorThunk },
-	{ 0x06000056, NavMeshBuildSource_get_shape_mE359A5788D37A77F2274322406A969F24D875362_AdjustorThunk },
-	{ 0x06000057, NavMeshBuildSource_set_shape_mF78F14CE9B626D5279FD64B7E85D803808C14B42_AdjustorThunk },
-	{ 0x06000058, NavMeshBuildSource_set_area_m52BD5EFD88AF67F5065242DFCAEFF7AC924C2C0D_AdjustorThunk },
-	{ 0x06000059, NavMeshBuildSource_get_sourceObject_m51EF008BE3A0BE134763E1582E34083188C7C685_AdjustorThunk },
-	{ 0x0600005A, NavMeshBuildSource_get_component_mFC0AC306661A1786702758D8D5ABE8DFC775EFCD_AdjustorThunk },
-	{ 0x0600005F, NavMeshBuildMarkup_set_overrideArea_mFBD7DD020A6D6DA460DB1DF692AC40185FF7FA28_AdjustorThunk },
-	{ 0x06000060, NavMeshBuildMarkup_set_area_m4CAB4DA0BF89093DA5D1958F561E36741A377ED1_AdjustorThunk },
-	{ 0x06000061, NavMeshBuildMarkup_set_ignoreFromBuild_mFC4CF4120B8A2A275D8578850249823C6AA0D73A_AdjustorThunk },
-	{ 0x06000062, NavMeshBuildMarkup_set_overrideGenerateLinks_m4FAB7E7AC221EF979354B4941E65F3F55CB57DAA_AdjustorThunk },
-	{ 0x06000063, NavMeshBuildMarkup_set_generateLinks_m9A4B621EA9193E8D7B334FC5D5A995D04D2BF580_AdjustorThunk },
-	{ 0x06000064, NavMeshBuildMarkup_set_applyToChildren_m5222B30800362B1B3B3CC265D12B57829781D719_AdjustorThunk },
-	{ 0x06000065, NavMeshBuildMarkup_set_root_m430AD3DD5F28A57488C195C85E80CBEA710F70EE_AdjustorThunk },
-	{ 0x06000066, NavMeshBuildSettings_get_agentTypeID_m248DC5380737E4AFF5F4004811EE164DD31CE018_AdjustorThunk },
-	{ 0x06000067, NavMeshBuildSettings_set_agentTypeID_mE091F1311BFBC749DA3BD83F66DD7E44ACF384D5_AdjustorThunk },
-	{ 0x06000068, NavMeshBuildSettings_get_agentRadius_mD3570B1F8064375B93E81829E7D67BFCDCCCD3DC_AdjustorThunk },
-	{ 0x06000069, NavMeshBuildSettings_set_minRegionArea_mFEB60CF0E31EDC38FE91480F0C29130313377064_AdjustorThunk },
-	{ 0x0600006A, NavMeshBuildSettings_set_overrideVoxelSize_m92AB126B5F429E7382E5F303D0C803D89B9D07A7_AdjustorThunk },
-	{ 0x0600006B, NavMeshBuildSettings_set_voxelSize_mDEF5908F6C7C94F5EAF879DF9F28AE0226438BCD_AdjustorThunk },
-	{ 0x0600006C, NavMeshBuildSettings_set_overrideTileSize_m8451EB820C1A274972559C392C16193596A64B31_AdjustorThunk },
-	{ 0x0600006D, NavMeshBuildSettings_set_tileSize_mE1B92472E4DCAA121A64DC92949C872900DCC5A1_AdjustorThunk },
-	{ 0x0600006E, NavMeshBuildSettings_set_buildHeightMesh_mF126A107EC00A2336BEEDB06E3F84AEADF905E1E_AdjustorThunk },
+	{ 0x0600002D, NavMeshDataInstance_get_valid_m9BD94D223A13D2F84E95E7E70E672360402AE616_AdjustorThunk },
+	{ 0x0600002E, NavMeshDataInstance_get_id_m6C520A732C9A790D81D3DBD95CE3493440FC9F86_AdjustorThunk },
+	{ 0x0600002F, NavMeshDataInstance_set_id_m2CECFBED95125E066CA7A68BCC64C10912FCD61F_AdjustorThunk },
+	{ 0x06000030, NavMeshDataInstance_Remove_mDC57A2ABE926E61CC28E001EC9AA5A40B9CA7635_AdjustorThunk },
+	{ 0x06000031, NavMeshDataInstance_set_owner_m09F05AD2057CA0058E74504143C95ED8E1AABC8D_AdjustorThunk },
+	{ 0x06000032, NavMeshLinkData_set_startPosition_m4E0893E2A63775D7129A831A574F2F0A06440BE2_AdjustorThunk },
+	{ 0x06000033, NavMeshLinkData_set_endPosition_m1B5D0E5D015DC6DFB762CD7D97A410B1288AC6AC_AdjustorThunk },
+	{ 0x06000034, NavMeshLinkData_set_costModifier_mE28AAEBCA77463892876EAADF05AA110D2339600_AdjustorThunk },
+	{ 0x06000035, NavMeshLinkData_set_bidirectional_m89572A00DDCC0E1AB1CF328655D40F66008EB24F_AdjustorThunk },
+	{ 0x06000036, NavMeshLinkData_set_width_mD244463C49B525AFA44B7F56843E41F567D16496_AdjustorThunk },
+	{ 0x06000037, NavMeshLinkData_set_area_m6DA7475FA09DF4488B24D3B70B6101A70F79CB19_AdjustorThunk },
+	{ 0x06000038, NavMeshLinkData_set_agentTypeID_m4822096B83F3D22FF348616C02F28F1F7FE66BF7_AdjustorThunk },
+	{ 0x06000039, NavMeshLinkInstance_get_id_m977E1F909249931074CA9190A1DBCB0A6654F1D6_AdjustorThunk },
+	{ 0x0600003A, NavMeshLinkInstance_set_id_mA9A63E79FBA46A0ED4995E85A42CB9AF4D0FEEAB_AdjustorThunk },
+	{ 0x06000054, NavMeshBuildSource_get_transform_m1950BA7D6106161B25629D19037355FAFCC8FF77_AdjustorThunk },
+	{ 0x06000055, NavMeshBuildSource_set_transform_m7E9E224BFD798D20012492199BBD408D82AA9A00_AdjustorThunk },
+	{ 0x06000056, NavMeshBuildSource_get_size_m515CADA91789EC141B963B72FB217DA442CFBACE_AdjustorThunk },
+	{ 0x06000057, NavMeshBuildSource_set_size_m8BF0198CBE370CE89B9B29917E105ABA54F05762_AdjustorThunk },
+	{ 0x06000058, NavMeshBuildSource_get_shape_mE359A5788D37A77F2274322406A969F24D875362_AdjustorThunk },
+	{ 0x06000059, NavMeshBuildSource_set_shape_mF78F14CE9B626D5279FD64B7E85D803808C14B42_AdjustorThunk },
+	{ 0x0600005A, NavMeshBuildSource_set_area_m52BD5EFD88AF67F5065242DFCAEFF7AC924C2C0D_AdjustorThunk },
+	{ 0x0600005B, NavMeshBuildSource_get_sourceObject_m51EF008BE3A0BE134763E1582E34083188C7C685_AdjustorThunk },
+	{ 0x0600005C, NavMeshBuildSource_get_component_mFC0AC306661A1786702758D8D5ABE8DFC775EFCD_AdjustorThunk },
+	{ 0x06000061, NavMeshBuildMarkup_set_overrideArea_mFBD7DD020A6D6DA460DB1DF692AC40185FF7FA28_AdjustorThunk },
+	{ 0x06000062, NavMeshBuildMarkup_set_area_m4CAB4DA0BF89093DA5D1958F561E36741A377ED1_AdjustorThunk },
+	{ 0x06000063, NavMeshBuildMarkup_set_ignoreFromBuild_mFC4CF4120B8A2A275D8578850249823C6AA0D73A_AdjustorThunk },
+	{ 0x06000064, NavMeshBuildMarkup_set_overrideGenerateLinks_m4FAB7E7AC221EF979354B4941E65F3F55CB57DAA_AdjustorThunk },
+	{ 0x06000065, NavMeshBuildMarkup_set_generateLinks_m9A4B621EA9193E8D7B334FC5D5A995D04D2BF580_AdjustorThunk },
+	{ 0x06000066, NavMeshBuildMarkup_set_applyToChildren_m5222B30800362B1B3B3CC265D12B57829781D719_AdjustorThunk },
+	{ 0x06000067, NavMeshBuildMarkup_set_root_m430AD3DD5F28A57488C195C85E80CBEA710F70EE_AdjustorThunk },
+	{ 0x06000068, NavMeshBuildSettings_get_agentTypeID_m248DC5380737E4AFF5F4004811EE164DD31CE018_AdjustorThunk },
+	{ 0x06000069, NavMeshBuildSettings_set_agentTypeID_mE091F1311BFBC749DA3BD83F66DD7E44ACF384D5_AdjustorThunk },
+	{ 0x0600006A, NavMeshBuildSettings_get_agentRadius_mD3570B1F8064375B93E81829E7D67BFCDCCCD3DC_AdjustorThunk },
+	{ 0x0600006B, NavMeshBuildSettings_set_minRegionArea_mFEB60CF0E31EDC38FE91480F0C29130313377064_AdjustorThunk },
+	{ 0x0600006C, NavMeshBuildSettings_set_overrideVoxelSize_m92AB126B5F429E7382E5F303D0C803D89B9D07A7_AdjustorThunk },
+	{ 0x0600006D, NavMeshBuildSettings_set_voxelSize_mDEF5908F6C7C94F5EAF879DF9F28AE0226438BCD_AdjustorThunk },
+	{ 0x0600006E, NavMeshBuildSettings_set_overrideTileSize_m8451EB820C1A274972559C392C16193596A64B31_AdjustorThunk },
+	{ 0x0600006F, NavMeshBuildSettings_set_tileSize_mE1B92472E4DCAA121A64DC92949C872900DCC5A1_AdjustorThunk },
+	{ 0x06000070, NavMeshBuildSettings_set_buildHeightMesh_mF126A107EC00A2336BEEDB06E3F84AEADF905E1E_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[110] = 
+static const int32_t s_InvokerIndices[112] = 
 {
 	14258,
 	14268,
@@ -335,6 +339,7 @@ static const int32_t s_InvokerIndices[110] =
 	10604,
 	10327,
 	10327,
+	10604,
 	13813,
 	18809,
 	22328,
@@ -348,6 +353,7 @@ static const int32_t s_InvokerIndices[110] =
 	19920,
 	19915,
 	19915,
+	19920,
 	13813,
 	10452,
 	20072,
@@ -428,7 +434,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_AIModule_CodeGenModule;
 const Il2CppCodeGenModule g_UnityEngine_AIModule_CodeGenModule = 
 {
 	"UnityEngine.AIModule.dll",
-	110,
+	112,
 	s_methodPointers,
 	39,
 	s_adjustorThunks,
