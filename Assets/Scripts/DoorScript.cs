@@ -21,6 +21,10 @@ public class DoorXRKey : MonoBehaviour
     [SerializeField] private Vector3 keyRotationOffset = Vector3.zero;
     [Tooltip("Position à ajouter à la clé (en mètres) pour l'ajuster")]
     [SerializeField] private Vector3 keyPositionOffset = Vector3.zero;
+    
+    [Header("Sound Manager")]
+    [Tooltip("Référence au gestionnaire de sons de la porte")]
+    public DoorSoundManager soundManager;
 
     bool opened = false;
 
@@ -52,6 +56,12 @@ public class DoorXRKey : MonoBehaviour
         if (args.interactableObject.transform.gameObject != requiredKey) return;
 
         opened = true;
+        
+        // Jouer le son de déverrouillage
+        if (soundManager != null)
+        {
+            soundManager.PlayUnlockSound();
+        }
         
         // NE PAS repositionner la clé - le socket l'a déjà bien placée
         // Juste attendre une frame pour que le socket finisse son placement
@@ -92,6 +102,12 @@ public class DoorXRKey : MonoBehaviour
     void UnlockDoor()
     {
         animator.SetTrigger(openTriggerName);
+        
+        // Jouer le son d'ouverture de la porte
+        if (soundManager != null)
+        {
+            soundManager.PlayOpenSound();
+        }
         
         // Désactiver la collision de la porte
         if (doorCollider != null)
