@@ -20,19 +20,19 @@ public class BossAI : MonoBehaviour
     public Transform point_13;
 
     [Header("Paramètres de Mouvement")]
-    public float moveSpeed = 2f;
+    public float moveSpeed = 1.5f;
     public float rotationSpeed = 8f;
     public Vector3 visualOffset = new Vector3(0, 0.9f, 0);
 
     [Header("Paramètres de Vision")]
-    public float visionRange = 10f;
-    public float visionAngle = 90f;
-    public LayerMask obstacleLayer; // ⚠️ IMPORTANT: Configurez ce layer dans l'Inspector !
-    public bool debugRaycast = true; // 🔍 Active les logs de debug pour les raycasts
+    public float visionRange = 6f; 
+    public float visionAngle = 60f; 
+    public LayerMask obstacleLayer; 
+    public bool debugRaycast = true; 
     
     [Header("Paramètres de Poursuite")]
     public float chaseSpeed = 4f;
-    public float chaseTimeBeforeGiveUp = 5f;
+    public float chaseTimeBeforeGiveUp = 3f; 
 
     [Header("Animation aux Points")]
     public string pointAnimationTrigger = "PointAction"; // Nom du trigger dans l'Animator
@@ -81,11 +81,11 @@ public class BossAI : MonoBehaviour
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.speed = moveSpeed;
-        agent.acceleration = 10f;
+        agent.acceleration = 6f;
         agent.angularSpeed = 120f;
         agent.autoBraking = false;
         agent.stoppingDistance = 0.2f;
-        agent.radius = 0.3f;
+        agent.radius = 0.25f;
 
         if (anim != null)
         {
@@ -232,7 +232,7 @@ public class BossAI : MonoBehaviour
             Debug.Log("🤷 Joueur perdu, retour à la patrouille");
             currentState = BossState.Patrol;
             agent.speed = moveSpeed;
-            agent.acceleration = 10f;
+            agent.acceleration = 3f;
             
             float minDist = float.MaxValue;
             int closestIndex = 0;
