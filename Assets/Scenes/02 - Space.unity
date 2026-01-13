@@ -5835,6 +5835,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2002024795}
   m_LocalEulerAnglesHint: {x: 67.2, y: 0, z: 0}
+--- !u!4 &996620545 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3096561930399443279, guid: d18b1f447b8013d41a97584386634ee9, type: 3}
+  m_PrefabInstance: {fileID: 1041493240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1002568401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6516,7 +6521,7 @@ Transform:
   - {fileID: 1127636760}
   - {fileID: 1767176546}
   - {fileID: 1653648317}
-  - {fileID: 1041493241}
+  - {fileID: 996620545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1127636759
