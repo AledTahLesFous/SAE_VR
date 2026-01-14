@@ -21794,10 +21794,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 722810132994219353, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1657142816}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
 --- !u!4 &1348055297 stripped
 Transform:
@@ -27572,29 +27569,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4597191570734880, guid: b4565462db6db384ca38c2736c28e0e4, type: 3}
   m_PrefabInstance: {fileID: 1656651445}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1657142812 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 722810132994219353, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
+--- !u!114 &1657142816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8983948721224590406, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
   m_PrefabInstance: {fileID: 1348055296}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1657142816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657142812}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77af49e6c03b44ea39a072030994fee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchSoundManager
-  switchOnSound: {fileID: 8300000, guid: e116baefda2264652a0e6dbe83d73cc1, type: 3}
-  switchOffSound: {fileID: 8300000, guid: e116baefda2264652a0e6dbe83d73cc1, type: 3}
-  volume: 0.7
-  minDistance: 1
-  maxDistance: 10
-  use3DSound: 1
 --- !u!1001 &1658865643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28211,7 +28196,7 @@ Transform:
   m_GameObject: {fileID: 1692168016}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.66, y: 2.33, z: 5.4800005}
+  m_LocalPosition: {x: -10.66, y: 0.64, z: 5.4800005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

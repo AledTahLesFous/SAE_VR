@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3972230106029848340}
   - component: {fileID: 1137413766718255861}
   - component: {fileID: 5901437242611887384}
+  - component: {fileID: 8983948721224590406}
   m_Layer: 0
   m_Name: PF_Switch
   m_TagString: Untagged
@@ -72,7 +73,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::XRSwitch
   onVisual: {fileID: 7865228742879963729}
   offVisual: {fileID: 4739783910436686085}
-  targetLight: {fileID: 0}
+  targetLights: []
+  soundManager: {fileID: 0}
 --- !u!114 &5901437242611887384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +147,24 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
+--- !u!114 &8983948721224590406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722810132994219353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77af49e6c03b44ea39a072030994fee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwitchSoundManager
+  switchOnSound: {fileID: 8300000, guid: e116baefda2264652a0e6dbe83d73cc1, type: 3}
+  switchOffSound: {fileID: 8300000, guid: e116baefda2264652a0e6dbe83d73cc1, type: 3}
+  volume: 0.7
+  minDistance: 1
+  maxDistance: 10
+  use3DSound: 1
 --- !u!1 &3086727226071890872
 GameObject:
   m_ObjectHideFlags: 0
