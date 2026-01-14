@@ -14039,7 +14039,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.605105, g: 0.6760479, b: 0.8037735, a: 1}
   m_Intensity: 0.24
   m_Range: 1.31
   m_SpotAngle: 30
@@ -16121,6 +16121,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5081d2c6aa32442dab8f47bc893a837b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1240044518}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5081d2c6aa32442dab8f47bc893a837b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1240044522}
   m_SourcePrefab: {fileID: 100100000, guid: 5081d2c6aa32442dab8f47bc893a837b, type: 3}
 --- !u!1 &1240044517 stripped
 GameObject:
@@ -16163,16 +16166,16 @@ MonoBehaviour:
     m_Bits: 4294967295
   debugRaycast: 1
   chaseSpeed: 4
-  chaseTimeBeforeGiveUp: 5
+  chaseTimeBeforeGiveUp: 1.5
   pointAnimationTrigger: PointAction
   animationDuration: 3
   pauseTimeAtPoint: 0
   showVisionInGame: 1
-  patrolVisionColor: {r: 0, g: 0, b: 1, a: 0.3}
-  chaseVisionColor: {r: 1, g: 0, b: 0, a: 0.5}
+  patrolVisionColor: {r: 0.605105, g: 0.6760479, b: 0.8037735, a: 1}
+  chaseVisionColor: {r: 0.50980395, g: 0, b: 0, a: 0.5}
   bossLight: {fileID: 1738548091}
-  patrolLightColor: {r: 0, g: 0.094857454, b: 1, a: 1}
-  chaseLightColor: {r: 1, g: 0, b: 0, a: 1}
+  patrolLightColor: {r: 0.605105, g: 0.6760479, b: 0.8037735, a: 1}
+  chaseLightColor: {r: 0.509434, g: 0, b: 0, a: 1}
 --- !u!195 &1240044519
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16200,6 +16203,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5081d2c6aa32442dab8f47bc893a837b, type: 3}
   m_PrefabInstance: {fileID: 1240044516}
   m_PrefabAsset: {fileID: 0}
+--- !u!215 &1240044522
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240044517}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 1
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 128
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 10, y: 10, z: 10}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
 --- !u!1 &1241647516 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1470279098769358944, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -25271,7 +25307,7 @@ Transform:
   m_GameObject: {fileID: 1738548088}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03999996, y: -0.49, z: -0.13999987}
+  m_LocalPosition: {x: -0.03999901, y: 0.17999995, z: 0.091905594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25316,11 +25352,11 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 89.44
-  m_Range: 6.04
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Color: {r: 0.605105, g: 0.6760479, b: 0.8037735, a: 1}
+  m_Intensity: 6.13
+  m_Range: 14.54
+  m_SpotAngle: 84.90147
+  m_InnerSpotAngle: 46.239815
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
