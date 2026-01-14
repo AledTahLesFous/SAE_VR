@@ -64,11 +64,6 @@ public class KeypadManager : MonoBehaviour
         {
             currentInput += number.ToString();
             UpdateDisplay();
-            
-            if (currentInput.Length == codeLength)
-            {
-                Invoke(nameof(CheckCode), 0.5f);
-            }
         }
     }
     
@@ -91,7 +86,7 @@ public class KeypadManager : MonoBehaviour
         {
             if (displayText != null)
             {
-                displayText.text = "✓ CORRECT";
+                displayText.text = "CORRECT";
                 displayText.color = Color.green;
             }
             onCodeCorrect?.Invoke();
@@ -100,7 +95,7 @@ public class KeypadManager : MonoBehaviour
         {
             if (displayText != null)
             {
-                displayText.text = "✗ ERREUR";
+                displayText.text = "ERREUR";
                 displayText.color = Color.red;
             }
             onCodeIncorrect?.Invoke();
