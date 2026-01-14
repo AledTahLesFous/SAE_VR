@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/04 - Menu.unity
     guid: 8b3f10c41d118493b9b64514de6a6b0d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/02 - Space.unity
     guid: a690d9bcb3fd1a34887a5cf168041dec
   - enabled: 0
@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/05 - Boss.unity
     guid: 609c76e33806945d3b7b7a2b7c8c0c44
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/06 - Exit.unity
     guid: a2729782bc0bc49818499f45285f37a0
   m_configObjects:
