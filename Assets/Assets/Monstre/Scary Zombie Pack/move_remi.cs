@@ -26,7 +26,7 @@ public class BossAI : MonoBehaviour
 
     [Header("Paramètres de Vision")]
     public float visionRange = 6f; 
-    public float visionAngle = 60f; 
+    public float visionAngle = 45f; 
     public LayerMask obstacleLayer; 
     public bool debugRaycast = true; 
     
@@ -44,6 +44,11 @@ public class BossAI : MonoBehaviour
     public Color patrolVisionColor = Color.cyan;
     public Color chaseVisionColor = Color.red;
 
+    [Header("Lumière du Boss")]
+    public Light bossLight; // Assigne ta lumière ici dans l'inspecteur
+    public Color patrolLightColor = Color.white;
+    public Color chaseLightColor = Color.red;
+
     private NavMeshAgent agent;
     private Animator anim;
     private Transform visualRoot;
@@ -52,6 +57,7 @@ public class BossAI : MonoBehaviour
 
     private enum BossState { Patrol, Chase }
     private BossState currentState = BossState.Patrol;
+    private BossState previousState = BossState.Patrol; // Pour détecter le changement d'état
     
     private Transform vrCamera;
     private float chaseTimer = 0f;
@@ -148,6 +154,13 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
+        // Changement de couleur de la lumière si l'état change
+        if (bossLight != null && currentState != previousState)
+        {
+            bossLight.color = (currentState == BossState.Chase) ? chaseLightColor : patrolLightColor;
+            previousState = currentState;
+        }
+
         CheckVision();
 
         switch (currentState)
