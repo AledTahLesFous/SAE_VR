@@ -81,7 +81,7 @@ public class BossAI : MonoBehaviour
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.speed = moveSpeed;
-        agent.acceleration = 6f;
+        agent.acceleration = 3f;
         agent.angularSpeed = 120f;
         agent.autoBraking = false;
         agent.stoppingDistance = 0.2f;
@@ -211,7 +211,7 @@ public class BossAI : MonoBehaviour
                         Debug.Log("👁️ JOUEUR VR DÉTECTÉ ! POURSUITE ACTIVÉE !");
                         currentState = BossState.Chase;
                         agent.speed = chaseSpeed;
-                        agent.acceleration = 15f;
+                        agent.acceleration = 3f;
                     }
                     chaseTimer = 0f;
                     lastKnownPlayerPosition = vrCamera.position;
@@ -331,7 +331,7 @@ public class BossAI : MonoBehaviour
 
         if (visualRoot != null)
         {
-            visualRoot.localPosition = visualOffset;
+            visualRoot.localPosition = Vector3.zero;
             visualRoot.localRotation = Quaternion.identity;
         }
 
