@@ -56,10 +56,15 @@ public class VRDeathEffect : MonoBehaviour
         fadeQuad.transform.localRotation = Quaternion.identity;
         fadeQuad.transform.localScale = new Vector3(2, 2, 1);
         
-        fadeMaterial = new Material(Shader.Find("Unlit/Color"));
-        fadeMaterial.color = new Color(0, 0, 0, 0);
+        // CORRECTION : Utiliser un shader transparent
+        fadeMaterial = new Material(Shader.Find("Unlit/Transparent"));
+        fadeMaterial.color = new Color(0, 0, 0, 0); // Complètement transparent au départ
         fadeQuad.GetComponent<Renderer>().material = fadeMaterial;
-        fadeQuad.layer = 5;
+        
+        // CORRECTION : Désactiver le fadeQuad au départ
+        fadeQuad.SetActive(false);
+        
+        Debug.Log("✅ FadeQuad créé et désactivé");
     }
 
     public void TriggerDeath()
@@ -71,6 +76,12 @@ public class VRDeathEffect : MonoBehaviour
         
         cameraStartPosition = mainCamera.transform.position;
         cameraStartRotation = mainCamera.transform.rotation;
+        
+        // NOUVEAU : Activer le fadeQuad
+        if (fadeQuad != null)
+        {
+            fadeQuad.SetActive(true);
+        }
         
         if (deathSound != null && audioSource != null)
         {
@@ -161,9 +172,16 @@ public class VRDeathEffect : MonoBehaviour
         
         isDead = false;
         
+        // Réinitialiser le fade
         if (fadeMaterial != null)
         {
             fadeMaterial.color = new Color(0, 0, 0, 0);
+        }
+        
+        // NOUVEAU : Désactiver le fadeQuad après respawn
+        if (fadeQuad != null)
+        {
+            fadeQuad.SetActive(false);
         }
         
         if (mainCamera != null)
@@ -179,6 +197,13 @@ public class VRDeathEffect : MonoBehaviour
         }
         
         EnablePlayerMovement();
+        
+        // NOUVEAU : Notifier le boss de réinitialiser
+        BossAI boss = FindObjectOfType<BossAI>();
+        if (boss != null)
+        {
+            boss.ResetBossAfterRespawn();
+        }
     }
 
     public bool IsDead()
