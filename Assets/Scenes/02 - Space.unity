@@ -25052,6 +25052,8 @@ MonoBehaviour:
   point_11: {fileID: 1538976848}
   point_12: {fileID: 857610755}
   point_13: {fileID: 1749574374}
+  point_14: {fileID: 0}
+  point_15: {fileID: 0}
   moveSpeed: 3
   rotationSpeed: 0.3
   visualOffset: {x: 0, y: 0, z: 0}
