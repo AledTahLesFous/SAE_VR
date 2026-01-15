@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/04 - Menu.unity
     guid: 8b3f10c41d118493b9b64514de6a6b0d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/02 - Space.unity
     guid: a690d9bcb3fd1a34887a5cf168041dec
   - enabled: 0
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/06 - Exit.unity
     guid: a2729782bc0bc49818499f45285f37a0
+  - enabled: 1
+    path: Assets/Scenes/07 - Riddle.unity
+    guid: a8af6793786864ea585f3960c4e2536a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5e5185ffbf12342acad6aa4f071f1df0, type: 2}
