@@ -18,9 +18,12 @@ public class BossAI : MonoBehaviour
     public Transform point_11;
     public Transform point_12;
     public Transform point_13;
+    /*
     public Transform point_14;
     public Transform point_15;
-
+    public Transform point_16;
+    public Transform point_17;
+*/
     [Header("Paramètres de Mouvement")]
     public float moveSpeed = 1.5f;
     public float rotationSpeed = 8f;
@@ -207,7 +210,7 @@ public class BossAI : MonoBehaviour
         points = new Transform[] { 
             point_0, point_1, point_2, point_3, point_4, point_5,
             point_6, point_7, point_8, point_9, point_10, point_11,
-            point_12, point_13, point_14, point_15
+            point_12, point_13//, point_14, point_15, point_16, point_17
         };
 
         System.Array.Sort(points, (a, b) => {
