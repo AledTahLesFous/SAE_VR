@@ -225,7 +225,7 @@ MonoBehaviour:
   doorCollider: {fileID: 0}
   keyRotationOffset: {x: 0, y: 180, z: 0}
   keyPositionOffset: {x: 0, y: 0, z: 0.5}
-  soundManager: {fileID: 5377692484858333532, guid: 084af097ea6994ff794ecbdeda944683, type: 3}
+  soundManager: {fileID: 0}
 --- !u!65 &4564293687438615704
 BoxCollider:
   m_ObjectHideFlags: 0
