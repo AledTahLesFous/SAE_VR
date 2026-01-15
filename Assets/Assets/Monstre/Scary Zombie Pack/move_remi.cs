@@ -18,12 +18,7 @@ public class BossAI : MonoBehaviour
     public Transform point_11;
     public Transform point_12;
     public Transform point_13;
-    /*
-    public Transform point_14;
-    public Transform point_15;
-    public Transform point_16;
-    public Transform point_17;
-*/
+
     [Header("Paramètres de Mouvement")]
     public float moveSpeed = 1.5f;
     public float rotationSpeed = 8f;
@@ -63,6 +58,11 @@ public class BossAI : MonoBehaviour
     public Color patrolLightColor = Color.white;
     public Color chaseLightColor = Color.red;
 
+    [Header("Détection de Mort du Joueur")]
+    public float catchDistance = 1.2f;
+    private VRDeathEffect playerDeathEffect;
+    private bool hasKilledPlayer = false;
+
     private NavMeshAgent agent;
     private Animator anim;
     private AudioSource audioSourceGrognement;
@@ -93,7 +93,6 @@ public class BossAI : MonoBehaviour
         // Récupère tous les Audio Sources
         AudioSource[] audioSources = GetComponents<AudioSource>();
         
-        // Si on a déjà 3 Audio Sources
         if (audioSources.Length >= 3)
         {
             audioSourceGrognement = audioSources[0];
@@ -101,7 +100,6 @@ public class BossAI : MonoBehaviour
             audioSourceAttaque = audioSources[2];
             Debug.Log("✅ 3 Audio Sources existants trouvés");
         }
-        // Si on a 2 Audio Sources, on en crée un troisième
         else if (audioSources.Length == 2)
         {
             audioSourceGrognement = audioSources[0];
@@ -109,7 +107,6 @@ public class BossAI : MonoBehaviour
             audioSourceAttaque = gameObject.AddComponent<AudioSource>();
             Debug.Log("✅ Audio Source pour l'attaque créé");
         }
-        // Si on a qu'un seul Audio Source, on en crée deux de plus
         else if (audioSources.Length == 1)
         {
             audioSourceGrognement = audioSources[0];
@@ -117,7 +114,6 @@ public class BossAI : MonoBehaviour
             audioSourceAttaque = gameObject.AddComponent<AudioSource>();
             Debug.Log("✅ Audio Sources pour les pas et l'attaque créés");
         }
-        // Sinon on en crée 3
         else
         {
             audioSourceGrognement = gameObject.AddComponent<AudioSource>();
@@ -126,7 +122,6 @@ public class BossAI : MonoBehaviour
             Debug.Log("✅ 3 Audio Sources créés");
         }
 
-        // Configuration de l'Audio Source pour le grognement (aux points)
         if (audioSourceGrognement != null && grognementSound != null)
         {
             audioSourceGrognement.clip = grognementSound;
@@ -136,7 +131,6 @@ public class BossAI : MonoBehaviour
             Debug.Log("✅ Audio grognement configuré");
         }
 
-        // Configuration de l'Audio Source pour les pas (en marchant)
         if (audioSourcePas != null && pasSound != null)
         {
             audioSourcePas.clip = pasSound;
@@ -146,22 +140,13 @@ public class BossAI : MonoBehaviour
             Debug.Log("✅ Audio pas configuré");
         }
 
-        // Configuration de l'Audio Source pour l'attaque (en poursuite)
         if (audioSourceAttaque != null && attaqueSound != null)
         {
             audioSourceAttaque.clip = attaqueSound;
-            audioSourceAttaque.loop = true; // EN BOUCLE pendant la poursuite
+            audioSourceAttaque.loop = true;
             audioSourceAttaque.playOnAwake = false;
             audioSourceAttaque.volume = attaqueVolume;
             Debug.Log("✅ Audio attaque configuré");
-        }
-        else if (audioSourceAttaque == null)
-        {
-            Debug.LogWarning("⚠️ Audio Source pour l'attaque non trouvé !");
-        }
-        else if (attaqueSound == null)
-        {
-            Debug.LogWarning("⚠️ Aucun son d'attaque assigné !");
         }
 
         visualRoot = transform.Find("mixamorigHips");
@@ -202,15 +187,39 @@ public class BossAI : MonoBehaviour
             Debug.LogError("❌ Aucune caméra VR trouvée !");
         }
 
+        // NOUVEAU : Trouver le VRDeathEffect sur le joueur
+        if (vrCamera != null)
+        {
+            playerDeathEffect = vrCamera.GetComponentInParent<VRDeathEffect>();
+            if (playerDeathEffect == null)
+            {
+                Transform xrOrigin = vrCamera.transform.parent;
+                while (xrOrigin != null && playerDeathEffect == null)
+                {
+                    playerDeathEffect = xrOrigin.GetComponent<VRDeathEffect>();
+                    xrOrigin = xrOrigin.parent;
+                }
+            }
+            
+            if (playerDeathEffect != null)
+            {
+                Debug.Log("✅ VRDeathEffect trouvé sur le joueur");
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ VRDeathEffect non trouvé ! Ajoutez-le sur le XR Origin");
+            }
+        }
+
         if (obstacleLayer == 0)
         {
-            Debug.LogWarning("⚠️ ATTENTION : obstacleLayer n'est pas configuré ! Le boss verra à travers les murs.");
+            Debug.LogWarning("⚠️ ATTENTION : obstacleLayer n'est pas configuré !");
         }
 
         points = new Transform[] { 
             point_0, point_1, point_2, point_3, point_4, point_5,
             point_6, point_7, point_8, point_9, point_10, point_11,
-            point_12, point_13//, point_14, point_15, point_16, point_17
+            point_12, point_13
         };
 
         System.Array.Sort(points, (a, b) => {
@@ -288,7 +297,6 @@ public class BossAI : MonoBehaviour
                     if (hasObstacle)
                     {
                         Debug.DrawLine(rayStart, hit.point, Color.yellow);
-                        Debug.Log("🧱 Obstacle détecté : " + hit.collider.gameObject.name + " (Layer: " + LayerMask.LayerToName(hit.collider.gameObject.layer) + ")");
                     }
                     else
                     {
@@ -311,7 +319,7 @@ public class BossAI : MonoBehaviour
                         currentState = BossState.Chase;
                         agent.speed = chaseSpeed;
                         agent.acceleration = 3f;
-                        hasPlayedAttackSound = false; // Reset pour jouer le son d'attaque
+                        hasPlayedAttackSound = false;
                     }
                     chaseTimer = 0f;
                     lastKnownPlayerPosition = vrCamera.position;
@@ -334,7 +342,6 @@ public class BossAI : MonoBehaviour
             agent.speed = moveSpeed;
             agent.acceleration = 3f;
             
-            // ARRÊTE LE SON D'ATTAQUE
             if (audioSourceAttaque != null && audioSourceAttaque.isPlaying)
             {
                 audioSourceAttaque.Stop();
@@ -398,21 +405,46 @@ public class BossAI : MonoBehaviour
                 hasPlayedAnimationAtPoint = true;
                 isPlayingPointAnimation = true;
                 
-                // JOUE LE SON DE GROGNEMENT ICI
                 if (audioSourceGrognement != null && grognementSound != null)
                 {
                     audioSourceGrognement.PlayOneShot(grognementSound, grognementVolume);
                     Debug.Log("🔊 Grognement joué au point " + currentIndex);
                 }
                 
-                Debug.Log("🎬 Animation jouée au point " + currentIndex + " - BOSS ARRÊTÉ");
+                Debug.Log("🎬 Animation jouée au point " + currentIndex);
+            }
+        }
+    }
+
+    // NOUVELLE MÉTHODE : Vérifier si le boss attrape le joueur
+    void CheckPlayerCapture()
+    {
+        if (hasKilledPlayer || vrCamera == null || playerDeathEffect == null) return;
+        
+        float distanceToPlayer = Vector3.Distance(transform.position, vrCamera.position);
+        
+        if (distanceToPlayer <= catchDistance)
+        {
+            Debug.Log("💀 BOSS A ATTRAPÉ LE JOUEUR !");
+            hasKilledPlayer = true;
+            playerDeathEffect.TriggerDeath();
+            agent.isStopped = true;
+            
+            if (audioSourceAttaque != null && audioSourceAttaque.isPlaying)
+            {
+                audioSourceAttaque.Stop();
             }
         }
     }
 
     void ChasePlayer()
     {
-        // JOUE LE SON D'ATTAQUE (UNE SEULE FOIS au début de la poursuite)
+        // NOUVEAU : Vérifier si le boss attrape le joueur
+        CheckPlayerCapture();
+        
+        // Si le joueur est mort, ne plus le poursuivre
+        if (hasKilledPlayer) return;
+        
         if (!hasPlayedAttackSound && audioSourceAttaque != null && attaqueSound != null)
         {
             audioSourceAttaque.Play();
@@ -449,7 +481,6 @@ public class BossAI : MonoBehaviour
             anim.SetBool("IsMoving", isMoving);
         }
 
-        // GESTION DU SON DES PAS (seulement en PATROUILLE)
         if (currentState == BossState.Patrol)
         {
             if (audioSourcePas != null && pasSound != null)
@@ -457,18 +488,15 @@ public class BossAI : MonoBehaviour
                 if (isMoving && !wasMovingLastFrame)
                 {
                     audioSourcePas.Play();
-                    Debug.Log("👟 Son des pas démarré");
                 }
                 else if (!isMoving && wasMovingLastFrame)
                 {
                     audioSourcePas.Stop();
-                    Debug.Log("🛑 Son des pas arrêté");
                 }
             }
         }
         else if (currentState == BossState.Chase)
         {
-            // Arrête les pas pendant la poursuite (on a le son d'attaque)
             if (audioSourcePas != null && audioSourcePas.isPlaying)
             {
                 audioSourcePas.Stop();
@@ -596,5 +624,24 @@ public class BossAI : MonoBehaviour
         Vector3 forward = transform.forward * 2f;
         Gizmos.DrawLine(eyePosition, eyePosition + forward);
         Gizmos.DrawSphere(eyePosition + forward, 0.1f);
+
+        // NOUVEAU : Visualiser la zone de capture
+        if (Application.isPlaying && currentState == BossState.Chase)
+        {
+            Gizmos.color = new Color(1, 0, 0, 0.3f);
+            Gizmos.DrawWireSphere(transform.position, catchDistance);
+        }
+    }
+
+    // NOUVELLE MÉTHODE PUBLIQUE : Réinitialiser le boss après respawn
+    public void ResetBossAfterRespawn()
+    {
+        hasKilledPlayer = false;
+        agent.isStopped = false;
+        currentState = BossState.Patrol;
+        agent.speed = moveSpeed;
+        chaseTimer = 0f;
+        
+        Debug.Log("🔄 Boss réinitialisé après respawn du joueur");
     }
 }
