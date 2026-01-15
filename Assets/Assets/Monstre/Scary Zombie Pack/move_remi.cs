@@ -18,11 +18,14 @@ public class BossAI : MonoBehaviour
     public Transform point_11;
     public Transform point_12;
     public Transform point_13;
+    public Transform point_14;
+    public Transform point_15;
 
     [Header("Paramètres de Mouvement")]
     public float moveSpeed = 1.5f;
     public float rotationSpeed = 8f;
     public Vector3 visualOffset = new Vector3(0, 0.9f, 0);
+    public float minVelocityToWalk = 0.3f;
 
     [Header("Paramètres de Vision")]
     public float visionRange = 6f; 
@@ -35,9 +38,17 @@ public class BossAI : MonoBehaviour
     public float chaseTimeBeforeGiveUp = 3f; 
 
     [Header("Animation aux Points")]
-    public string pointAnimationTrigger = "PointAction"; // Nom du trigger dans l'Animator
-    public float animationDuration = 2f; // Durée de ton animation (en secondes)
-    public float pauseTimeAtPoint = 0f; // Temps de pause APRÈS l'animation (0 = pas de pause)
+    public string pointAnimationTrigger = "PointAction";
+    public float animationDuration = 2f;
+    public float pauseTimeAtPoint = 0f;
+
+    [Header("Audio du Boss")]
+    public AudioClip grognementSound;
+    public float grognementVolume = 0.8f;
+    public AudioClip pasSound;
+    public float pasVolume = 0.5f;
+    public AudioClip attaqueSound;
+    public float attaqueVolume = 1f;
 
     [Header("Visualisation (visible en jeu)")]
     public bool showVisionInGame = true;
@@ -45,31 +56,110 @@ public class BossAI : MonoBehaviour
     public Color chaseVisionColor = Color.red;
 
     [Header("Lumière du Boss")]
-    public Light bossLight; // Assigne ta lumière ici dans l'inspecteur
+    public Light bossLight;
     public Color patrolLightColor = Color.white;
     public Color chaseLightColor = Color.red;
 
     private NavMeshAgent agent;
     private Animator anim;
+    private AudioSource audioSourceGrognement;
+    private AudioSource audioSourcePas;
+    private AudioSource audioSourceAttaque;
     private Transform visualRoot;
     private Transform[] points;
     private int currentIndex = 0;
 
     private enum BossState { Patrol, Chase }
     private BossState currentState = BossState.Patrol;
-    private BossState previousState = BossState.Patrol; // Pour détecter le changement d'état
+    private BossState previousState = BossState.Patrol;
     
     private Transform vrCamera;
     private float chaseTimer = 0f;
     private Vector3 lastKnownPlayerPosition;
-    private bool hasPlayedAnimationAtPoint = false; // Pour jouer l'animation une seule fois par point
-    private bool isPlayingPointAnimation = false; // Pour arrêter le mouvement pendant l'animation
-    private float animationTimer = 0f; // Timer pour l'animation
+    private bool hasPlayedAnimationAtPoint = false;
+    private bool isPlayingPointAnimation = false;
+    private float animationTimer = 0f;
+    private bool wasMovingLastFrame = false;
+    private bool hasPlayedAttackSound = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
+        
+        // Récupère tous les Audio Sources
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        
+        // Si on a déjà 3 Audio Sources
+        if (audioSources.Length >= 3)
+        {
+            audioSourceGrognement = audioSources[0];
+            audioSourcePas = audioSources[1];
+            audioSourceAttaque = audioSources[2];
+            Debug.Log("✅ 3 Audio Sources existants trouvés");
+        }
+        // Si on a 2 Audio Sources, on en crée un troisième
+        else if (audioSources.Length == 2)
+        {
+            audioSourceGrognement = audioSources[0];
+            audioSourcePas = audioSources[1];
+            audioSourceAttaque = gameObject.AddComponent<AudioSource>();
+            Debug.Log("✅ Audio Source pour l'attaque créé");
+        }
+        // Si on a qu'un seul Audio Source, on en crée deux de plus
+        else if (audioSources.Length == 1)
+        {
+            audioSourceGrognement = audioSources[0];
+            audioSourcePas = gameObject.AddComponent<AudioSource>();
+            audioSourceAttaque = gameObject.AddComponent<AudioSource>();
+            Debug.Log("✅ Audio Sources pour les pas et l'attaque créés");
+        }
+        // Sinon on en crée 3
+        else
+        {
+            audioSourceGrognement = gameObject.AddComponent<AudioSource>();
+            audioSourcePas = gameObject.AddComponent<AudioSource>();
+            audioSourceAttaque = gameObject.AddComponent<AudioSource>();
+            Debug.Log("✅ 3 Audio Sources créés");
+        }
+
+        // Configuration de l'Audio Source pour le grognement (aux points)
+        if (audioSourceGrognement != null && grognementSound != null)
+        {
+            audioSourceGrognement.clip = grognementSound;
+            audioSourceGrognement.loop = false;
+            audioSourceGrognement.playOnAwake = false;
+            audioSourceGrognement.volume = grognementVolume;
+            Debug.Log("✅ Audio grognement configuré");
+        }
+
+        // Configuration de l'Audio Source pour les pas (en marchant)
+        if (audioSourcePas != null && pasSound != null)
+        {
+            audioSourcePas.clip = pasSound;
+            audioSourcePas.loop = true;
+            audioSourcePas.playOnAwake = false;
+            audioSourcePas.volume = pasVolume;
+            Debug.Log("✅ Audio pas configuré");
+        }
+
+        // Configuration de l'Audio Source pour l'attaque (en poursuite)
+        if (audioSourceAttaque != null && attaqueSound != null)
+        {
+            audioSourceAttaque.clip = attaqueSound;
+            audioSourceAttaque.loop = true; // EN BOUCLE pendant la poursuite
+            audioSourceAttaque.playOnAwake = false;
+            audioSourceAttaque.volume = attaqueVolume;
+            Debug.Log("✅ Audio attaque configuré");
+        }
+        else if (audioSourceAttaque == null)
+        {
+            Debug.LogWarning("⚠️ Audio Source pour l'attaque non trouvé !");
+        }
+        else if (attaqueSound == null)
+        {
+            Debug.LogWarning("⚠️ Aucun son d'attaque assigné !");
+        }
 
         visualRoot = transform.Find("mixamorigHips");
         if (visualRoot == null)
@@ -109,7 +199,6 @@ public class BossAI : MonoBehaviour
             Debug.LogError("❌ Aucune caméra VR trouvée !");
         }
 
-        // ⚠️ Vérification du LayerMask
         if (obstacleLayer == 0)
         {
             Debug.LogWarning("⚠️ ATTENTION : obstacleLayer n'est pas configuré ! Le boss verra à travers les murs.");
@@ -118,7 +207,7 @@ public class BossAI : MonoBehaviour
         points = new Transform[] { 
             point_0, point_1, point_2, point_3, point_4, point_5,
             point_6, point_7, point_8, point_9, point_10, point_11,
-            point_12, point_13
+            point_12, point_13, point_14, point_15
         };
 
         System.Array.Sort(points, (a, b) => {
@@ -154,7 +243,6 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        // Changement de couleur de la lumière si l'état change
         if (bossLight != null && currentState != previousState)
         {
             bossLight.color = (currentState == BossState.Chase) ? chaseLightColor : patrolLightColor;
@@ -187,30 +275,26 @@ public class BossAI : MonoBehaviour
             
             if (angleToPlayer <= visionAngle / 2f)
             {
-                // 🎯 RAYCAST AMÉLIORÉ : Vérifie les obstacles
                 Vector3 rayStart = transform.position + Vector3.up * 1.5f;
                 Vector3 rayDirection = (vrCamera.position - rayStart).normalized;
                 
-                // 🔍 RAYCAST POUR DÉTECTER LES OBSTACLES
                 bool hasObstacle = Physics.Raycast(rayStart, rayDirection, out RaycastHit hit, distanceToPlayer, obstacleLayer);
                 
-                // 🐛 Debug pour voir ce qui bloque
                 if (debugRaycast)
                 {
                     if (hasObstacle)
                     {
-                        Debug.DrawLine(rayStart, hit.point, Color.yellow); // Ligne jaune jusqu'au mur
+                        Debug.DrawLine(rayStart, hit.point, Color.yellow);
                         Debug.Log("🧱 Obstacle détecté : " + hit.collider.gameObject.name + " (Layer: " + LayerMask.LayerToName(hit.collider.gameObject.layer) + ")");
                     }
                     else
                     {
-                        Debug.DrawLine(rayStart, vrCamera.position, Color.green); // Ligne verte = vision claire
+                        Debug.DrawLine(rayStart, vrCamera.position, Color.green);
                     }
                 }
 
                 if (hasObstacle)
                 {
-                    // ❌ MUR DÉTECTÉ - Le boss ne peut pas voir le joueur
                     if (currentState == BossState.Chase)
                     {
                         chaseTimer += Time.deltaTime;
@@ -218,13 +302,13 @@ public class BossAI : MonoBehaviour
                 }
                 else
                 {
-                    // ✅ AUCUN MUR - JOUEUR VISIBLE !
                     if (currentState != BossState.Chase)
                     {
                         Debug.Log("👁️ JOUEUR VR DÉTECTÉ ! POURSUITE ACTIVÉE !");
                         currentState = BossState.Chase;
                         agent.speed = chaseSpeed;
                         agent.acceleration = 3f;
+                        hasPlayedAttackSound = false; // Reset pour jouer le son d'attaque
                     }
                     chaseTimer = 0f;
                     lastKnownPlayerPosition = vrCamera.position;
@@ -246,6 +330,13 @@ public class BossAI : MonoBehaviour
             currentState = BossState.Patrol;
             agent.speed = moveSpeed;
             agent.acceleration = 3f;
+            
+            // ARRÊTE LE SON D'ATTAQUE
+            if (audioSourceAttaque != null && audioSourceAttaque.isPlaying)
+            {
+                audioSourceAttaque.Stop();
+                Debug.Log("🛑 Son d'attaque arrêté");
+            }
             
             float minDist = float.MaxValue;
             int closestIndex = 0;
@@ -271,43 +362,46 @@ public class BossAI : MonoBehaviour
 
     void Patrol()
     {
-        // ⏸️ SI L'ANIMATION EST EN COURS, ON ARRÊTE LE BOSS
         if (isPlayingPointAnimation)
         {
-            agent.isStopped = true; // 🛑 STOP complet
+            agent.isStopped = true;
             animationTimer += Time.deltaTime;
             
-            // ✅ Une fois l'animation terminée
             if (animationTimer >= animationDuration + pauseTimeAtPoint)
             {
                 isPlayingPointAnimation = false;
                 animationTimer = 0f;
-                agent.isStopped = false; // 🚶 REPREND la marche
+                agent.isStopped = false;
                 
-                // Va au point suivant
                 currentIndex = (currentIndex + 1) % points.Length;
                 
                 if (points[currentIndex] != null)
                 {
                     agent.SetDestination(points[currentIndex].position);
-                    hasPlayedAnimationAtPoint = false; // Reset pour le prochain point
+                    hasPlayedAnimationAtPoint = false;
                     Debug.Log("🚶 Va au point " + currentIndex + " : " + points[currentIndex].name);
                 }
             }
-            return; // ⚠️ Ne fait rien d'autre pendant l'animation
+            return;
         }
 
         agent.speed = moveSpeed;
 
-        // 🔄 Arrivé au point de patrouille
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            // 🎬 LANCE L'ANIMATION UNE SEULE FOIS
             if (!hasPlayedAnimationAtPoint && anim != null && !string.IsNullOrEmpty(pointAnimationTrigger))
             {
                 anim.SetTrigger(pointAnimationTrigger);
                 hasPlayedAnimationAtPoint = true;
-                isPlayingPointAnimation = true; // 🛑 Active le mode "animation en cours"
+                isPlayingPointAnimation = true;
+                
+                // JOUE LE SON DE GROGNEMENT ICI
+                if (audioSourceGrognement != null && grognementSound != null)
+                {
+                    audioSourceGrognement.PlayOneShot(grognementSound, grognementVolume);
+                    Debug.Log("🔊 Grognement joué au point " + currentIndex);
+                }
+                
                 Debug.Log("🎬 Animation jouée au point " + currentIndex + " - BOSS ARRÊTÉ");
             }
         }
@@ -315,6 +409,14 @@ public class BossAI : MonoBehaviour
 
     void ChasePlayer()
     {
+        // JOUE LE SON D'ATTAQUE (UNE SEULE FOIS au début de la poursuite)
+        if (!hasPlayedAttackSound && audioSourceAttaque != null && attaqueSound != null)
+        {
+            audioSourceAttaque.Play();
+            hasPlayedAttackSound = true;
+            Debug.Log("⚔️ Son d'attaque démarré !");
+        }
+        
         if (vrCamera != null)
         {
             agent.SetDestination(vrCamera.position);
@@ -334,13 +436,43 @@ public class BossAI : MonoBehaviour
 
     void LateUpdate()
     {
-        float speed = agent.velocity.magnitude;
-        bool isMoving = speed > 0.1f;
+        Vector3 horizontalVelocity = new Vector3(agent.velocity.x, 0, agent.velocity.z);
+        float speed = horizontalVelocity.magnitude;
+        
+        bool isMoving = speed > minVelocityToWalk;
         
         if (anim != null)
         {
             anim.SetBool("IsMoving", isMoving);
         }
+
+        // GESTION DU SON DES PAS (seulement en PATROUILLE)
+        if (currentState == BossState.Patrol)
+        {
+            if (audioSourcePas != null && pasSound != null)
+            {
+                if (isMoving && !wasMovingLastFrame)
+                {
+                    audioSourcePas.Play();
+                    Debug.Log("👟 Son des pas démarré");
+                }
+                else if (!isMoving && wasMovingLastFrame)
+                {
+                    audioSourcePas.Stop();
+                    Debug.Log("🛑 Son des pas arrêté");
+                }
+            }
+        }
+        else if (currentState == BossState.Chase)
+        {
+            // Arrête les pas pendant la poursuite (on a le son d'attaque)
+            if (audioSourcePas != null && audioSourcePas.isPlaying)
+            {
+                audioSourcePas.Stop();
+            }
+        }
+        
+        wasMovingLastFrame = isMoving;
 
         if (visualRoot != null)
         {
