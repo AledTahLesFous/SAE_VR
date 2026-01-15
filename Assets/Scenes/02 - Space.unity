@@ -2831,6 +2831,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9163906065887161040, guid: 9d4494b8b100519479f9699c5a7390a9, type: 3}
   m_PrefabInstance: {fileID: 169742463}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &171593986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171593987}
+  m_Layer: 0
+  m_Name: Respawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171593987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171593986}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9068899, y: -2.6399999, z: -2.0429306}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1692168017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &175653884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25743,6 +25774,7 @@ MonoBehaviour:
   bossLight: {fileID: 1738548091}
   patrolLightColor: {r: 0.605105, g: 0.6760479, b: 0.8037735, a: 1}
   chaseLightColor: {r: 0.509434, g: 0, b: 0, a: 1}
+  catchDistance: 1.2
 --- !u!195 &1240044519
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36487,6 +36519,7 @@ Transform:
   - {fileID: 1856778659}
   - {fileID: 1780596832}
   - {fileID: 1585813717}
+  - {fileID: 171593987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1695534488
@@ -40151,15 +40184,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.4800005
+      value: -0.35999966
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3
+      value: -1.5999999
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.25
+      value: -1.1300011
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40259,6 +40292,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856778674}
+    - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2129542431}
     - targetCorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856778673}
@@ -40581,6 +40617,11 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -1.78, z: 0}
+--- !u!20 &1856778683 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1856778658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1863976566
 GameObject:
   m_ObjectHideFlags: 0
@@ -45505,6 +45546,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34d4792abfcc457fbcc8d6d11546710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GarageDoor
+--- !u!114 &2129542431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856778672}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9652f15e92c340859d823537ae34986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRDeathEffect
+  mainCamera: {fileID: 1856778683}
+  fadeToBlackDuration: 2
+  cameraFallSpeed: 1.5
+  cameraFallDistance: 1.5
+  deathSound: {fileID: 0}
+  respawnPoint: {fileID: 171593987}
+  respawnDelay: 3
+  autoRespawn: 0
 --- !u!1001 &2131583729
 PrefabInstance:
   m_ObjectHideFlags: 0
