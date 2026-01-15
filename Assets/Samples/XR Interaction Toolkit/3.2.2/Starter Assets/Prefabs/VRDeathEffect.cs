@@ -24,21 +24,24 @@ public class VRDeathEffect : MonoBehaviour
     private Quaternion cameraStartRotation;
     private AudioSource audioSource;
 
-    void Start()
+    void Awake()
     {
-        // Trouver la caméra
+        // Trouver la caméra immédiatement
         if (mainCamera == null)
         {
             mainCamera = Camera.main;
         }
         
+        // Créer le fade overlay AVANT le Start
+        CreateFadeQuad();
+    }
+
+    void Start()
+    {
         // Créer l'audio source
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = 0f;
         audioSource.playOnAwake = false;
-        
-        // Créer le fade overlay
-        CreateFadeQuad();
         
         Debug.Log("✅ VRDeathEffect initialisé");
     }
