@@ -13,6 +13,7 @@ public class VRDeathEffect : MonoBehaviour
     
     private bool isDead = false;
     private AudioSource audioSource;
+    private BlackFadeTransition fade;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class VRDeathEffect : MonoBehaviour
         audioSource.spatialBlend = 0f;
         audioSource.playOnAwake = false;
         
+        fade = GetComponent<BlackFadeTransition>();
         Debug.Log("✅ VRDeathEffect initialisé");
     }
 
@@ -41,12 +43,19 @@ public class VRDeathEffect : MonoBehaviour
 
     IEnumerator DeathSequence()
     {
+        if (fade != null)
+            yield return StartCoroutine(fade.FadeIn());
+        else
+            yield return null;
+
         yield return new WaitForSeconds(respawnDelay);
         
         if (autoRespawn)
         {
             RespawnPlayer();
         }
+        if (fade != null)
+            StartCoroutine(fade.FadeOut());
     }
 
     void DisablePlayerMovement()
