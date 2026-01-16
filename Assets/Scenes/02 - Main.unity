@@ -2856,7 +2856,7 @@ Transform:
   m_GameObject: {fileID: 171593986}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9068899, y: -2.6399999, z: -2.0429306}
+  m_LocalPosition: {x: 2.9768896, y: -2.6399999, z: 7.857069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16756,6 +16756,10 @@ PrefabInstance:
       value: Light_Corridor_4
       objectReference: {fileID: 0}
     - target: {fileID: 5013497504300243719, guid: df452f81c5c31354187a4b45742ad135, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05481863
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013497504300243719, guid: df452f81c5c31354187a4b45742ad135, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.232
       objectReference: {fileID: 0}
@@ -26402,7 +26406,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   debugRaycast: 0
   chaseSpeed: 3.5
-  chaseTimeBeforeGiveUp: 2.5
+  chaseTimeBeforeGiveUp: 1.5
   pointAnimationTrigger: PointAction
   animationDuration: 1
   pauseTimeAtPoint: 0.2
@@ -26491,7 +26495,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 3ce771a22f79347f79113107861578a3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -26501,7 +26505,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -26551,7 +26555,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -26588,7 +26592,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7c4935a28708d454facb5a4a91216ff2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -26598,7 +26602,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -26648,7 +26652,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -26685,7 +26689,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b4670db518e5d4f6faf220b7b7f6f07f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -26695,7 +26699,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -26745,7 +26749,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -29558,6 +29562,14 @@ PrefabInstance:
       propertyPath: 'targetLights.Array.data[6]'
       value: 
       objectReference: {fileID: 1972677025}
+    - target: {fileID: 3231836667415620800, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.316111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3231836667415620800, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.720798
+      objectReference: {fileID: 0}
     - target: {fileID: 5371889415490671551, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.069999695
@@ -29605,6 +29617,18 @@ PrefabInstance:
     - target: {fileID: 7380616327804563691, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907501057552103204, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907501057552103204, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
+      propertyPath: m_Range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907501057552103204, guid: c707ca4b1086d1149913e83b1d3de976, type: 3}
+      propertyPath: m_Intensity
+      value: 3.44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41213,8 +41237,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: field of view
       value: 60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_FocalLength

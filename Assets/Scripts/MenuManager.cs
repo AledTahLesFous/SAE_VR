@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour
     
     [Header("Configuration")]
     [Tooltip("Index de la scène dans Build Settings (0 = Menu, 1 = Space, etc.)")]
-    [SerializeField] private int sceneIndex = 0; // Changez à 2 pour tester avec une scène vide
+    [SerializeField] private int sceneIndex = 1; // Changez à 2 pour tester avec une scène vide
     
     private bool isLoading = false;
     

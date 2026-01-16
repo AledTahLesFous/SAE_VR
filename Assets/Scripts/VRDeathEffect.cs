@@ -14,14 +14,18 @@ public class VRDeathEffect : MonoBehaviour
     private bool isDead = false;
     private AudioSource audioSource;
     private BlackFadeTransition fade;
+    private Camera mainCamera;
 
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.spatialBlend = 0f;
+        audioSource.spatialBlend = 1f; // 1 = 3D spatial, 0 = stéréo
         audioSource.playOnAwake = false;
+        audioSource.dopplerLevel = 1f;
+        audioSource.minDistance = 1f;
+        audioSource.maxDistance = 50f;
         
-        fade = GetComponent<BlackFadeTransition>();
+        mainCamera = Camera.main;
         Debug.Log("✅ VRDeathEffect initialisé");
     }
 
