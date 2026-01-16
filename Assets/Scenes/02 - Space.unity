@@ -21773,6 +21773,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 250422653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1064950083 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1856778658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1068899755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40066,6 +40071,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856778674}
+    - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856778676}
     - targetCorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856778673}
@@ -40338,6 +40346,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1856778676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856778672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9652f15e92c340859d823537ae34986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRDeathEffect
+  mainCamera: {fileID: 1064950083}
+  fadeToBlackDuration: 2
+  cameraFallSpeed: 1.5
+  cameraFallDistance: 1.5
+  deathSound: {fileID: 0}
+  respawnPoint: {fileID: 0}
+  respawnDelay: 3
+  autoRespawn: 1
 --- !u!54 &1856778679
 Rigidbody:
   m_ObjectHideFlags: 0
