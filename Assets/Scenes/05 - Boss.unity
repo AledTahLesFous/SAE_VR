@@ -1520,6 +1520,7 @@ MonoBehaviour:
   bossLight: {fileID: 1552767088}
   patrolLightColor: {r: 0.605105, g: 0.6760479, b: 0.8037735, a: 1}
   chaseLightColor: {r: 0.509434, g: 0, b: 0, a: 1}
+  catchDistance: 1.2
 --- !u!195 &1084392305
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2250,6 +2251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7347985736721345035, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+    - {fileID: -2401433527014873624, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
