@@ -41,10 +41,15 @@ public class BossAI : MonoBehaviour
     public float pauseTimeAtPoint = 0f;
 
     [Header("Audio du Boss")]
+    [Tooltip("Son 'remi (audio)' - quand il tourne")]
     public AudioClip grognementSound;
     public float grognementVolume = 0.8f;
+    
+    [Tooltip("Son 'remi courrir' - quand il marche")]
     public AudioClip pasSound;
     public float pasVolume = 0.5f;
+    
+    [Tooltip("Son 'remi (attaque)' - quand il te trouve")]
     public AudioClip attaqueSound;
     public float attaqueVolume = 1f;
 
@@ -90,44 +95,28 @@ public class BossAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         
-        // Récupère tous les Audio Sources
-        AudioSource[] audioSources = GetComponents<AudioSource>();
+        // IMPORTANT : Désactiver tous les AudioSource existants AVANT d'en créer de nouveaux
+        AudioSource[] existingAudioSources = GetComponents<AudioSource>();
+        foreach (AudioSource source in existingAudioSources)
+        {
+            source.Stop();
+            source.enabled = false;
+            Debug.Log("🛑 AudioSource existant désactivé");
+        }
         
-        if (audioSources.Length >= 3)
-        {
-            audioSourceGrognement = audioSources[0];
-            audioSourcePas = audioSources[1];
-            audioSourceAttaque = audioSources[2];
-            Debug.Log("✅ 3 Audio Sources existants trouvés");
-        }
-        else if (audioSources.Length == 2)
-        {
-            audioSourceGrognement = audioSources[0];
-            audioSourcePas = audioSources[1];
-            audioSourceAttaque = gameObject.AddComponent<AudioSource>();
-            Debug.Log("✅ Audio Source pour l'attaque créé");
-        }
-        else if (audioSources.Length == 1)
-        {
-            audioSourceGrognement = audioSources[0];
-            audioSourcePas = gameObject.AddComponent<AudioSource>();
-            audioSourceAttaque = gameObject.AddComponent<AudioSource>();
-            Debug.Log("✅ Audio Sources pour les pas et l'attaque créés");
-        }
-        else
-        {
-            audioSourceGrognement = gameObject.AddComponent<AudioSource>();
-            audioSourcePas = gameObject.AddComponent<AudioSource>();
-            audioSourceAttaque = gameObject.AddComponent<AudioSource>();
-            Debug.Log("✅ 3 Audio Sources créés");
-        }
-
+        // Créer 3 nouveaux AudioSource pour les 3 sons différents (APRÈS avoir désactivé les anciens)
+        audioSourceGrognement = gameObject.AddComponent<AudioSource>();
+        audioSourcePas = gameObject.AddComponent<AudioSource>();
+        audioSourceAttaque = gameObject.AddComponent<AudioSource>();
+        
+        // Configurer l'audio du grognement (quand il tourne)
         if (audioSourceGrognement != null && grognementSound != null)
         {
             audioSourceGrognement.clip = grognementSound;
             audioSourceGrognement.loop = false;
             audioSourceGrognement.playOnAwake = false;
             audioSourceGrognement.volume = grognementVolume;
+            audioSourceGrognement.Stop();
             Debug.Log("✅ Audio grognement configuré");
         }
 
@@ -137,6 +126,7 @@ public class BossAI : MonoBehaviour
             audioSourcePas.loop = true;
             audioSourcePas.playOnAwake = false;
             audioSourcePas.volume = pasVolume;
+            audioSourcePas.Stop();
             Debug.Log("✅ Audio pas configuré");
         }
 
@@ -146,6 +136,7 @@ public class BossAI : MonoBehaviour
             audioSourceAttaque.loop = true;
             audioSourceAttaque.playOnAwake = false;
             audioSourceAttaque.volume = attaqueVolume;
+            audioSourceAttaque.Stop();
             Debug.Log("✅ Audio attaque configuré");
         }
 
@@ -383,6 +374,13 @@ public class BossAI : MonoBehaviour
                 animationTimer = 0f;
                 agent.isStopped = false;
                 
+                // Arrêter le grognement quand l'animation se termine
+                if (audioSourceGrognement != null && audioSourceGrognement.isPlaying)
+                {
+                    audioSourceGrognement.Stop();
+                    Debug.Log("🛑 Grognement arrêté");
+                }
+                
                 currentIndex = (currentIndex + 1) % points.Length;
                 
                 if (points[currentIndex] != null)
@@ -405,9 +403,10 @@ public class BossAI : MonoBehaviour
                 hasPlayedAnimationAtPoint = true;
                 isPlayingPointAnimation = true;
                 
-                if (audioSourceGrognement != null && grognementSound != null)
+                // Jouer le grognement pendant l'animation
+                if (audioSourceGrognement != null && grognementSound != null && !audioSourceGrognement.isPlaying)
                 {
-                    audioSourceGrognement.PlayOneShot(grognementSound, grognementVolume);
+                    audioSourceGrognement.Play();
                     Debug.Log("🔊 Grognement joué au point " + currentIndex);
                 }
                 
@@ -641,6 +640,13 @@ public class BossAI : MonoBehaviour
         currentState = BossState.Patrol;
         agent.speed = moveSpeed;
         chaseTimer = 0f;
+        
+        // Arrêter tous les sons
+        if (audioSourceGrognement != null) audioSourceGrognement.Stop();
+        if (audioSourcePas != null) audioSourcePas.Stop();
+        if (audioSourceAttaque != null) audioSourceAttaque.Stop();
+        
+        hasPlayedAttackSound = false;
         
         Debug.Log("🔄 Boss réinitialisé après respawn du joueur");
     }
