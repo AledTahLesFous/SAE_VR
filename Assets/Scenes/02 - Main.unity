@@ -32838,6 +32838,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7849103773097924365, guid: 69be43ab1e7bf4883af4ce0c1d494f29, type: 3}
+      propertyPath: use3DSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8231857525334238072, guid: 69be43ab1e7bf4883af4ce0c1d494f29, type: 3}
       propertyPath: m_Name
       value: AmbientManager
@@ -41564,7 +41568,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -41614,7 +41618,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
