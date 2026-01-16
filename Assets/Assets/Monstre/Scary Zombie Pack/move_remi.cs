@@ -253,6 +253,9 @@ public class BossAI : MonoBehaviour
         }
 
         CheckVision();
+        
+        // NOUVEAU : Vérifier la capture même en patrouille
+        CheckPlayerCapture();
 
         switch (currentState)
         {
@@ -438,7 +441,7 @@ public class BossAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        // NOUVEAU : Vérifier si le boss attrape le joueur
+        // NOUVEAU : Vérifier si le boss attrape le joueur AVANT tout
         CheckPlayerCapture();
         
         // Si le joueur est mort, ne plus le poursuivre
